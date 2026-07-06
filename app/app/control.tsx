@@ -1,42 +1,42 @@
+import { useEffect } from "react";
 import {
   View,
-  Button,
   Text,
+  Button,
   StyleSheet,
 } from "react-native";
 
 import {
-  publishCommand
+  connectMQTT,
+  publishCommand,
 } from "../services/mqtt";
 
 export default function Control() {
+
+  useEffect(() => {
+    connectMQTT();
+  }, []);
 
   return (
     <View style={styles.container}>
 
       <Text style={styles.title}>
-        Control de lámpara
+        Smart Lamp
       </Text>
 
       <Button
-        title="ENCENDER"
+        title="Encender"
         onPress={() => {
-
           publishCommand("ON");
-
         }}
       />
 
-      <View
-        style={{ height: 20 }}
-      />
+      <View style={{ height: 20 }} />
 
       <Button
-        title="APAGAR"
+        title="Apagar"
         onPress={() => {
-
           publishCommand("OFF");
-
         }}
       />
 
@@ -47,15 +47,19 @@ export default function Control() {
 const styles = StyleSheet.create({
 
   container:{
+
     flex:1,
     justifyContent:"center",
     padding:20
+
   },
 
   title:{
-    fontSize:24,
-    marginBottom:20,
+
+    fontSize:28,
+    marginBottom:30,
     textAlign:"center"
+
   }
 
 });
