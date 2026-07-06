@@ -1,7 +1,5 @@
-export async function connectToESP32() {
+export async function connectESP32() {
 
-  console.log(
-    "Conectando al AP del ESP32"
-  );
+  console.log("Conectando al ESP32");
 
 }
